@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "../components/header";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import Typewriter from "typewriter-effect";
 
 export default function Qotd() {
   const [quote, setQuote] = useState({
@@ -53,15 +50,15 @@ export default function Qotd() {
         </div>
         <div className="p-5">
           <p className="text-[3rem] quote tracking-wide mb-4">
-          <Typewriter
-            options={{
-              strings: [quote.q],
-              autoStart: true,
-              loop: true,
-            }}
-          />
+            <Typewriter
+              options={{
+                strings: [quote.q],
+                autoStart: true,
+                loop: true,
+              }}
+            />
           </p>
-          
+
           <h2 className="text-[2rem] author tracking-wide">
             {quote.a || "Loading..."}
           </h2>
