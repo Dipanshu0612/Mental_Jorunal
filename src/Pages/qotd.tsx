@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/header";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import Typewriter from "typewriter-effect";
 
 export default function Qotd() {
   const [quote, setQuote] = useState({
