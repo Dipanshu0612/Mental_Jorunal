@@ -8,11 +8,20 @@ export default function Header() {
         <h1 className="font-bold text-2xl tracking-wide">D's SoulScribe</h1>
       </div>
       <nav className="space-x-10 p-3 text-xl flex list-none">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About Us</Link></li>
-        <li><Link to="/qotd">QOTD</Link></li>
-        <li><Link to="/write">Write Now!</Link></li>
-        <li><select name="mood" id="mood" className="bg-transparent">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About Us</Link>
+        </li>
+        <li>
+          <Link to="/qotd">QOTD</Link>
+        </li>
+        <li>
+          <Link to="/write">Write Now!</Link>
+        </li>
+        <li>
+          <select name="mood" id="mood" className="bg-transparent">
           <option value="😁">😁</option>
           <option value="🥲">🥲</option>
           <option value="😣">😣</option>
