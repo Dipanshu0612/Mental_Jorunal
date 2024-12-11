@@ -1,6 +1,7 @@
 import Header from "../components/header";
 import HomeImg1 from "../assests/HomeImg1.png";
 import { Link } from "react-router-dom";
+import Footer from "../components/footer";
 
 export default function Home() {
   return (
@@ -11,12 +12,13 @@ export default function Home() {
           <img
             src={HomeImg1}
             alt="HomeImg"
-            className="w-[50rem] h-[50rem] pl-5"
+            className="w-[49rem] h-[49rem] pl-5"
             id="HomeImg"
           />
         </div>
-        <div className="flex flex-col w-1/2 text-center items-center justify-center space-y-5 italic">
+        <div className="flex flex-col w-1/2 text-center items-center justify-center space-y-5 italic p-4">
           <h1 className="text-[4rem]">Welcome to D's SoulScribe!</h1>
+          <h3 className="text-[2.5rem]">Your Personal Mental Journal!</h3>
           <p className="text-2xl">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid
             eos eligendi iure! Sit officiis esse assumenda placeat quod tempora?
@@ -29,6 +31,7 @@ export default function Home() {
           </button>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

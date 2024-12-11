@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Header from "../components/header";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Typewriter from "typewriter-effect";
+import Footer from "../components/footer";
 
 export default function Qotd() {
   const [quote, setQuote] = useState({
@@ -10,37 +11,39 @@ export default function Qotd() {
     a: "",
   });
 
-  useEffect(() => {
-    async function fetchQuote(): Promise<void> {
-      try {
-        console.log("Getting Quote from API!");
-        const response = await axios.get(
-          "https://api.api-ninjas.com/v1/quotes?category=inspirational",
-          {
-            headers: {
-              "X-Api-Key": "skj/e8ziAnNwcj0xgfam4A==MRMQkgHVafAmff0v",
-            },
-          }
-        );
-        if (!response) {
-          console.error(response);
+  const fetchQuote = useCallback(async (): Promise<void> => {
+    try {
+      console.log("Getting Quote from API!");
+      const response = await axios.get(
+        "https://api.api-ninjas.com/v1/quotes?category=inspirational",
+        {
+          headers: {
+            "X-Api-Key": `${process.env.REACT_APP_API_KEY}`,
+          },
         }
+      );
+      
+      if (!response) {
+        console.error("No response received from API.");
+      } else {
         const data = await response.data;
         setQuote({
           q: data[0].quote,
           a: data[0].author,
         });
-        console.log(data);
-      } catch (error: any) {
-        console.log("Error: ", error);
       }
+    } catch (error: any) {
+      console.error("Error fetching quote:", error);
     }
+  }, []);
+
+  useEffect(() => {
     fetchQuote();
 
     return () => {
       console.log("Unmounting!");
     };
-  }, []);
+  }, [fetchQuote]); 
 
   return (
     <>
@@ -72,6 +75,7 @@ export default function Qotd() {
           </button>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

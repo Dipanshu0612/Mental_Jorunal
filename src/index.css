@@ -26,9 +26,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+textarea{
+  resize: none;
+}
 .header{
   font-family: "Staatliches", sans-serif;
   font-style: normal;
+  background-color: #b5fffc;
 }
 
 @keyframes floatImage {
@@ -45,7 +49,7 @@ code {
   }
 }
 
-#HomeImg{
+#HomeImg,#aboutimg{
   animation: floatImage 4s ease-in-out infinite;
 }
 .qotd_title{
@@ -64,4 +68,12 @@ code {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+}
+.footer{
+  font-family: "Staatliches", sans-serif;
+  font-style: normal;
+}
+.about_1:hover, .about_2:hover,.about_3:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgb(149, 209, 233);
 }

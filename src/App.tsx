@@ -3,6 +3,7 @@ import Home from './Pages/Home';
 import About from './Pages/About';
 import Qotd from './Pages/qotd';
 import Write from './Pages/Write';
+import MoodAnalysis from './Pages/MoodAnalysis';
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
           <Route path='/about' element={<About />}></Route>
           <Route path='/qotd' element={<Qotd />}></Route>
           <Route path='/write' element={<Write />}></Route>
+          <Route path='/analytics' element={<MoodAnalysis />}></Route>
         </Routes>
       </Router>
     </>
