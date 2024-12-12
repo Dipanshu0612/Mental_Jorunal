@@ -2,30 +2,50 @@ import BarChart from "../components/BarChart";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { PieChart } from "@mui/x-charts";
+import { useCallback, useEffect, useState } from "react";
 
 export default function MoodAnalysis() {
+  interface Journal {
+    name: string;
+    email: string;
+    title: string;
+    category: string;
+    entry: string;
+    mood: string;
+    date:string;
+  }
+  const [data,setData]=useState<Journal[]>([])
+  
+  const getData =useCallback(() => {
+    setData(JSON.parse(localStorage.getItem("formData") || '[]'))
+    // console.log(data)
+  },[])
+  useEffect(()=>{
+    getData();
+  },[getData])
   return (
     <>
       <Header />
       <div className="flex items-center justify-evenly p-6 flex-col space-y-8 -z-10 overflow-hidden">
-        <div className="mood_1 p-10 w-full flex items-center justify-around">
-          <BarChart />
+        <div className="mood_1 p-10 w-full flex flex-col items-center justify-around space-y-5">
           <h3 className="text-4xl w-1/2 text-center">Categroy Analysis</h3>
+          <BarChart />
         </div>
 
-        <div className="mood_2 p-6 w-full flex items-center justify-around">
+        <div className="mood_2 p-6 w-full flex items-center justify-around flex-col space-y-5">
+        <h3 className="text-4xl w-1/2 text-center">Mood Analysis</h3>
           <PieChart
             series={[
               {
-                data: [
-                  { id: 0, value: 10, label: "😁" },
-                  { id: 1, value: 2, label: "🥲" },
-                  { id: 2, value: 2, label: "😣" },
-                  { id: 3, value: 1, label: "😪" },
-                  { id: 4, value: 8, label: "😴" },
-                  { id: 5, value: 10, label: "😓" },
-                  { id: 5, value: 15, label: "😭" },
-                  { id: 5, value: 5, label: "😵‍💫" },
+               data : [
+                  { id: 0, value: data.filter((val) => val.mood === "😁").length, label: "😁" },
+                  { id: 1, value: data.filter((val) => val.mood === "🥲").length, label: "🥲" },
+                  { id: 2, value: data.filter((val) => val.mood === "😣").length, label: "😣" },
+                  { id: 3, value: data.filter((val) => val.mood === "😪").length, label: "😪" },
+                  { id: 4, value: data.filter((val) => val.mood === "😴").length, label: "😴" },
+                  { id: 5, value: data.filter((val) => val.mood === "😓").length, label: "😓" },
+                  { id: 6, value: data.filter((val) => val.mood === "😭").length, label: "😭" },
+                  { id: 7, value: data.filter((val) => val.mood === "😵‍💫").length, label: "😵‍💫" },
                 ],
                 highlightScope: { fade: "global", highlight: "item" },
                 faded: {
@@ -38,7 +58,6 @@ export default function MoodAnalysis() {
             height={300}
             width={800}
           />
-          <h3 className="text-4xl w-1/2 text-center">Mood Analysis</h3>
         </div>
       </div>
       <Footer />

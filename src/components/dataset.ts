@@ -182,7 +182,7 @@ export const dataset = [
   ]
   ;
   
-  export function valueFormatter(value: number | null) {
+export function valueFormatter(value: number | null) {
     return `${value}`;
   }
   

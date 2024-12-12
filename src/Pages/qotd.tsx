@@ -6,7 +6,10 @@ import Typewriter from "typewriter-effect";
 import Footer from "../components/footer";
 
 export default function Qotd() {
-  const [quote, setQuote] = useState({
+  const [quote, setQuote] = useState<{
+    q: string;
+    a: string;
+}>({
     q: "",
     a: "",
   });

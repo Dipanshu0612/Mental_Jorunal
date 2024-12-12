@@ -26,7 +26,7 @@ export default function Home() {
             aperiam voluptates doloribus eaque libero blanditiis in porro
             commodi necessitatibus, natus id!
           </p>
-          <button className="p-3 bg-blue-200 text-black rounded-md border border-white hover:bg-blue-300 transition-all hover:border-black hover:shadow-lg">
+          <button className="p-3 bg-blue-200 text-black rounded-md border border-white hover:bg-blue-300 transition-all hover:shadow-lg">
             <Link to="/write">Write Now! ✍🏼</Link>
           </button>
         </div>

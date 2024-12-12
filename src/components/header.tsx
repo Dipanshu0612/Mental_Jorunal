@@ -41,6 +41,11 @@ export default function Header() {
           </Link>
         </li>
         <li>
+          <Link to="/journals" style={({ isActive }) => isActive ? isActiveStyle : {}}>
+            Journal
+          </Link>
+        </li>
+        <li>
           <Link to="/analytics" style={({ isActive }) => isActive ? isActiveStyle : {}}>
             Analytics
           </Link>
