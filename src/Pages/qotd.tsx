@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Typewriter from "typewriter-effect";
 import Footer from "../components/footer";
+import ScrollReveal from 'scrollreveal';
 
 export default function Qotd() {
   const [quote, setQuote] = useState<{
@@ -42,6 +43,13 @@ export default function Qotd() {
 
   useEffect(() => {
     fetchQuote();
+    ScrollReveal().reveal('.special-reveal', {
+      distance: '100px',
+      duration: 1000,
+      delay: 200,
+      reset: true,
+      origin:'top'
+    });
 
     return () => {
       console.log("Unmounting!");
@@ -53,7 +61,7 @@ export default function Qotd() {
       <Header />
       <div className="flex flex-col items-center justify-evenly text-center p-4 space-y-20 overflow-hidden h-[50rem]">
         <div className="p-5">
-          <h2 className="qotd_title text-[6rem] tracking-widest">
+          <h2 className="qotd_title text-[6rem] tracking-widest special-reveal">
             Quote of the Day!
           </h2>
         </div>
