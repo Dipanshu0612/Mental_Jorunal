@@ -86,8 +86,8 @@ export default function Write() {
   return (
     <>
       <Header />
-      <div className="flex items-center justify-center p-3">
-        <form className="flex flex-col items-center justify-center space-y-5 p-20 w-[50%] bg-slate-100 rounded-lg shadow-lg">
+      <div className="flex items-center justify-center p-3 md:p-10 sm:p-7">
+        <form className="flex flex-col items-center justify-center space-y-5 p-20 w-[50%] bg-slate-100 rounded-lg shadow-lg md:p-10 sm:p-5 sm:w-full md:w-full">
           <input
             type="text"
             placeholder="Enter Your Name"

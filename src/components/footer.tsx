@@ -28,7 +28,7 @@ export default function Footer() {
   })
   return (
     <>
-      <div className="flex items-center justify-around footer tracking-wide text-gray-500 my-5">
+      <div className="flex items-center justify-around footer tracking-wide text-gray-500 my-5 flex-wrap md:flex-col sm:flex-col md:space-y-5 sm:space-y-5">
         <div className="flex justify-center items-center flex-col cursor-pointer special-reveal2">
           <h2 className="text-3xl">D's SoulScribe</h2>
           <h4 className="text-xl">You Personal Mental Joural!</h4>

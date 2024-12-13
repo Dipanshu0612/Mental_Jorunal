@@ -17,7 +17,7 @@ export default function Qotd() {
 
   const fetchQuote = useCallback(async (): Promise<void> => {
     try {
-      console.log("Getting Quote from API!");
+      // console.log("Getting Quote from API!");
       const response = await axios.get(
         "https://api.api-ninjas.com/v1/quotes?category=inspirational",
         {
@@ -51,22 +51,22 @@ export default function Qotd() {
       origin:'top'
     });
 
-    return () => {
-      console.log("Unmounting!");
-    };
+    // return () => {
+    //   console.log("Unmounting!");
+    // };
   }, [fetchQuote]); 
 
   return (
     <>
       <Header />
-      <div className="flex flex-col items-center justify-evenly text-center p-4 space-y-20 overflow-hidden h-[50rem]">
+      <div className="flex flex-col items-center justify-evenly text-center p-4 space-y-20 overflow-hidden h-[50rem] md:space-y-14 sm:space-y-7">
         <div className="p-5">
-          <h2 className="qotd_title text-[6rem] tracking-widest special-reveal">
+          <h2 className="qotd_title text-[6rem] tracking-widest special-reveal md:text-[4rem] sm:text-[3rem]">
             Quote of the Day!
           </h2>
         </div>
         <div className="p-5">
-          <p className="text-[3rem] quote tracking-wide mb-4">
+          <p className="text-[3rem] quote tracking-wide mb-4 md:text-[2.2rem] sm:text-[1.5rem]">
             <Typewriter
               options={{
                 strings: [quote.q],
@@ -76,12 +76,12 @@ export default function Qotd() {
             />
           </p>
 
-          <h2 className="text-[2rem] author tracking-wide">
+          <h2 className="text-[2rem] author tracking-wide md:text-[1.5rem] sm:text-[1.2rem]">
             {quote.a || "Loading..."}
           </h2>
         </div>
         <div className="p-5">
-          <button className="p-3 bg-blue-200 text-black rounded-md border border-white hover:bg-blue-300 transition-all hover:border-black hover:shadow-lg">
+          <button className="p-3 bg-blue-200 text-black rounded-md border border-white hover:bg-blue-300 transition-all hover:border-black hover:shadow-lg sm:text-[0.8rem]">
             <Link to="/write">Write Now! ✍🏼</Link>
           </button>
         </div>

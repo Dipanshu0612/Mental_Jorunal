@@ -86,3 +86,35 @@ textarea{
   border:2px solid skyblue;
   box-shadow: 0 0 10px skyblue;
 }
+@media screen and (max-width: 1100px) {
+  #menuicon {
+    display: block;
+    font-size: 2rem;
+    margin-right: 2rem;
+    color: black;
+  }
+  #nav {
+    position: fixed;
+    align-self: flex-end;
+    float: right;
+    top: 4rem;
+    right: 0rem;
+    width: 100%;
+    height: min-content;
+    background-color:rgb(253, 229, 233);
+  }
+  .nav li {
+    text-align: center;
+  }
+  .nav a.active {
+    padding: 0.5rem 0;
+  }
+}
+@media screen and (min-width:1101px){
+#menuicon{
+  display: none;
+}
+#nav{
+  display: flex!important;
+}
+}

@@ -36,11 +36,11 @@ export default function Journals() {
   return (
     <>
       <Header />
-      <div className="flex flex-col space-y-5 p-7 m-10 items-center justify-center">
+      <div className="flex flex-col space-y-5 p-7 m-10 items-center justify-center sm:m-1 sm:p-1 md:m-2 md:p-2">
         {reversedJournals.length > 0 ? <>
         {reversedJournals.map((journal: Journal,key:number) => {
           return (
-            <div className="flex flex-col p-7 space-y-2 italic bg-slate-50 shadow-md rounded-lg w-[75%] journal_box">
+            <div className="flex flex-col p-7 space-y-2 italic bg-slate-50 shadow-md rounded-lg w-[75%] journal_box flex-wrap" key={key}>
               <h3 className="text-2xl">{journal.name}</h3>
               <h4 className="">{journal.email}</h4>
               <h5 className="">{journal.date}</h5>
