@@ -2,19 +2,22 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { Alert, Snackbar, SnackbarCloseReason } from "@mui/material";
+import { z } from "zod";
 
 export default function Write() {
-  interface FormData {
-    name: string;
-    email: string;
-    title: string;
-    category: string;
-    entry: string;
-    mood: string;
-    date: string;
-  }
+  const FormData = z.object({
+    name: z.string(),
+    email: z.string().email({ message: "Invalid email address!" }),
+    title: z.string(),
+    category: z.string(),
+    entry: z.string(),
+    mood: z.string(),
+    date: z.string(),
+  });
 
-  const [formData, setFormData] = useState<FormData>({
+  type formdata = z.infer<typeof FormData>;
+
+  const [formData, setFormData] = useState<formdata>({
     name: "",
     email: "",
     title: "",
@@ -34,6 +37,7 @@ export default function Write() {
     }));
   };
   const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -44,6 +48,7 @@ export default function Write() {
     }
 
     setOpen(false);
+    setOpen2(false);
   };
 
   const handleSubmit = (e: FormEvent) => {
@@ -59,7 +64,6 @@ export default function Write() {
       date: formattedToday,
     }));
     // console.log(formData);
-    setOpen(true);
     e.preventDefault();
   };
 
@@ -67,11 +71,18 @@ export default function Write() {
     if (formData.mood && formData.date) {
       // console.log("Inside if!");
       // console.log('Updated formData:', formData);
-      const storedData: FormData[] = JSON.parse(
-        localStorage.getItem("formData") || "[]"
-      );
-      storedData.push(formData);
-      localStorage.setItem("formData", JSON.stringify(storedData));
+      const parsedData = FormData.safeParse(formData);
+      if (!parsedData.success) {
+        console.log("Error: ", parsedData.error);
+        setOpen2(true);
+      } else {
+        const storedData: formdata[] = JSON.parse(
+          localStorage.getItem("formData") || "[]"
+        );
+        storedData.push(parsedData.data);
+        localStorage.setItem("formData", JSON.stringify(storedData));
+        setOpen(true);
+      }
       setFormData({
         name: "",
         email: "",
@@ -82,7 +93,7 @@ export default function Write() {
         date: "",
       });
     }
-  }, [formData]);
+  }, [formData, FormData]);
   return (
     <>
       <Header />
@@ -165,6 +176,16 @@ export default function Write() {
               sx={{ width: "100%" }}
             >
               Your entry was successful in the journal!
+            </Alert>
+          </Snackbar>
+          <Snackbar open={open2} autoHideDuration={6000} onClose={handleClose}>
+            <Alert
+              onClose={handleClose}
+              severity="warning"
+              variant="filled"
+              sx={{ width: "100%" }}
+            >
+              There was an error in your entry! Please try again.
             </Alert>
           </Snackbar>
         </form>
