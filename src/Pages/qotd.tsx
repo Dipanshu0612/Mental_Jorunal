@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/header";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -15,33 +15,59 @@ export default function Qotd() {
     a: "",
   });
 
-  const fetchQuote = useCallback(async (): Promise<void> => {
-    try {
-      // console.log("Getting Quote from API!");
-      const response = await axios.get(
-        "https://api.api-ninjas.com/v1/quotes?category=inspirational",
-        {
-          headers: {
-            "X-Api-Key": `${process.env.REACT_APP_API_KEY}`,
-          },
-        }
-      );
+  // const fetchQuote = useCallback(async (): Promise<void> => {
+  //   try {
+  //     // console.log("Getting Quote from API!");
+  //     const response = await axios.get(
+  //       "https://api.api-ninjas.com/v1/quotes?category=inspirational",
+  //       {
+  //         headers: {
+  //           "X-Api-Key": `${process.env.REACT_APP_API_KEY}`,
+  //         },
+  //       }
+  //     );
       
-      if (!response) {
-        console.error("No response received from API.");
-      } else {
-        const data = await response.data;
-        setQuote({
-          q: data[0].quote,
-          a: data[0].author,
-        });
-      }
-    } catch (error: any) {
-      console.error("Error fetching quote:", error);
-    }
-  }, []);
+  //     if (!response) {
+  //       console.error("No response received from API.");
+  //     } else {
+  //       const data = await response.data;
+  //       setQuote({
+  //         q: data[0].quote,
+  //         a: data[0].author,
+  //       });
+  //     }
+  //   } catch (error: any) {
+  //     console.error("Error fetching quote:", error);
+  //   }
+  // }, []);
 
   useEffect(() => {
+    const fetchQuote = async (): Promise<void> => {
+      try {
+        // console.log("Getting Quote from API!");
+        const response = await axios.get(
+          "https://api.api-ninjas.com/v1/quotes?category=inspirational",
+          {
+            headers: {
+              "X-Api-Key": `${process.env.REACT_APP_API_KEY}`,
+            },
+          }
+        );
+
+        if (!response) {
+          console.error("No response received from API.");
+        } else {
+          const data = response.data;
+          setQuote({
+            q: data[0].quote,
+            a: data[0].author,
+          });
+        }
+      } catch (error: any) {
+        console.error("Error fetching quote:", error);
+      }
+    };
+
     fetchQuote();
     ScrollReveal().reveal('.special-reveal', {
       distance: '100px',
@@ -54,7 +80,7 @@ export default function Qotd() {
     // return () => {
     //   console.log("Unmounting!");
     // };
-  }, [fetchQuote]); 
+  }, []); 
 
   return (
     <>
