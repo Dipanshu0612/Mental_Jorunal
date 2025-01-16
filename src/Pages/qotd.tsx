@@ -46,7 +46,7 @@ export default function Qotd() {
       try {
         // console.log("Getting Quote from API!");
         const response = await axios.get(
-          "https://api.api-ninjas.com/v1/quotes?category=inspirational",
+          "https://api.api-ninjas.com/v1/quotes",
           {
             headers: {
               "X-Api-Key": `${process.env.REACT_APP_API_KEY}`,
