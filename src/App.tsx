@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
-import Qotd from "./Pages/Qotd.jsx";
+import Qotd from "./Pages/Qotd";
 import Write from "./Pages/Write";
 import MoodAnalysis from "./Pages/MoodAnalysis";
 import Journals from "./Pages/Journals";
