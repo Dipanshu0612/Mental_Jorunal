@@ -23,7 +23,7 @@
     "scrollreveal": "^4.0.9",
     "styled-components": "^6.1.13",
     "tailwindcss": "^3.4.16",
-    "typescript": "^5.7.2",
+    "typescript": "^5.9.3",
     "typewriter-effect": "^2.21.0",
     "zod": "^3.24.1"
   },
@@ -52,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@types/node": "^25.2.2",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
     "@types/scrollreveal": "^0.0.11"

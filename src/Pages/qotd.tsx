@@ -4,13 +4,14 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Typewriter from "typewriter-effect";
 import Footer from "../components/footer";
-import ScrollReveal from 'scrollreveal';
+import ScrollReveal from "scrollreveal";
+import { config } from "../config/config";
 
 export default function Qotd() {
   const [quote, setQuote] = useState<{
     q: string;
     a: string;
-}>({
+  }>({
     q: "",
     a: "",
   });
@@ -26,7 +27,7 @@ export default function Qotd() {
   //         },
   //       }
   //     );
-      
+
   //     if (!response) {
   //       console.error("No response received from API.");
   //     } else {
@@ -44,14 +45,13 @@ export default function Qotd() {
   useEffect(() => {
     const fetchQuote = async (): Promise<void> => {
       try {
-        // console.log("Getting Quote from API!");
         const response = await axios.get(
           "https://api.api-ninjas.com/v1/quotes",
           {
             headers: {
-              "X-Api-Key": `${process.env.REACT_APP_API_KEY}`,
+              "X-Api-Key": `${config.apiKey}`,
             },
-          }
+          },
         );
 
         if (!response) {
@@ -69,18 +69,18 @@ export default function Qotd() {
     };
 
     fetchQuote();
-    ScrollReveal().reveal('.special-reveal', {
-      distance: '100px',
+    ScrollReveal().reveal(".special-reveal", {
+      distance: "100px",
       duration: 1000,
       delay: 200,
       reset: true,
-      origin:'top'
+      origin: "top",
     });
 
     // return () => {
     //   console.log("Unmounting!");
     // };
-  }, []); 
+  }, []);
 
   return (
     <>
